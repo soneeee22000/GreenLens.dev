@@ -6,6 +6,10 @@
     <ProjectReference Include="..\..\src\GreenLens.Shared\GreenLens.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Azure.Search.Documents" Version="11.*" />
+  </ItemGroup>
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>

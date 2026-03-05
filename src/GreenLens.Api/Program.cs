@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.RateLimiting;
 using GreenLens.Core.Interfaces;
 using GreenLens.Core.Services;
 using GreenLens.Infrastructure.Data;
+using GreenLens.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Text.Json;
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<GreenLensDbContext>(options =>
 
 // --- Services (Clean Architecture DI) ---
 builder.Services.AddScoped<IEstimateRepository, EstimateRepository>();
+builder.Services.AddScoped<IEmissionFactorService, AzureEmissionFactorService>();
 builder.Services.AddScoped<CarbonEstimationService>();
 
 // --- Controllers ---
