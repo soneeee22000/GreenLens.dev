@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Azure;
 using Azure.Search.Documents;
 using Azure.Search.Documents.Models;
@@ -138,12 +139,27 @@ public class AzureEmissionFactorService : IEmissionFactorService
 /// </summary>
 public class SearchEmissionFactor
 {
+    [JsonPropertyName("id")]
     public string? Id { get; set; }
+
+    [JsonPropertyName("resourceType")]
     public string? ResourceType { get; set; }
+
+    [JsonPropertyName("provider")]
     public string? Provider { get; set; }
+
+    [JsonPropertyName("region")]
     public string? Region { get; set; }
+
+    [JsonPropertyName("co2ePerUnit")]
     public double? Co2ePerUnit { get; set; }
+
+    [JsonPropertyName("unit")]
     public string? Unit { get; set; }
+
+    [JsonPropertyName("source")]
     public string? Source { get; set; }
+
+    [JsonPropertyName("effectiveDate")]
     public DateTimeOffset? EffectiveDate { get; set; }
 }
