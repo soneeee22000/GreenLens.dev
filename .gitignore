@@ -42,5 +42,10 @@ TestResults/
 coverage/
 *.trx
 
+## Playwright
+playwright-report/
+test-results/
+blob-report/
+
 ## Docker
 docker-compose.override.yml

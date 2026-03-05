@@ -280,16 +280,16 @@ graph TD
 - [x] API documentation polished (Swagger XML docs on all endpoints)
 - **Gate:** Full API feature-complete, all edge cases handled, 80%+ coverage -- PASSED
 
-### Phase 4: Angular Frontend (Sessions 7-8) -- IN PROGRESS
+### Phase 4: Angular Frontend (Sessions 7-8) -- COMPLETED
 
-- [ ] Angular 17 project scaffolding with TypeScript strict mode
-- [ ] Estimation form component (submit resource usage)
-- [ ] Results view component (CO2e breakdown + recommendations)
-- [ ] Dashboard component (historical estimates + line chart)
-- [ ] Emission factor search component
-- [ ] Error/loading/empty states for all views
-- [ ] E2E tests for critical user flows
-- **Gate:** Full stack works end-to-end, all acceptance criteria met, ready to demo
+- [x] Angular 17 project scaffolding with TypeScript strict mode
+- [x] Estimation form component (submit resource usage)
+- [x] Results view component (CO2e breakdown + recommendations)
+- [x] Dashboard component (historical estimates + line chart)
+- [x] Emission factor search component
+- [x] Error/loading/empty states for all views
+- [x] E2E tests for critical user flows
+- **Gate:** Full stack works end-to-end, all acceptance criteria met, ready to demo -- PASSED
 
 ---
 
