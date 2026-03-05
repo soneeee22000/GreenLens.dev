@@ -1,8 +1,19 @@
-# GreenLens - Cloud Carbon Footprint Intelligence
+# GreenLens
 
-> Estimate, analyze, and reduce the carbon footprint of Azure cloud infrastructure with AI-powered recommendations.
+AI-powered cloud carbon footprint estimation for Azure infrastructure. Submit your resource usage — get CO2e estimates, per-resource breakdowns, and actionable reduction recommendations powered by Azure OpenAI.
 
-Built for DevOps and Cloud Engineers who need programmatic carbon estimation integrated into CI/CD pipelines -- not another dashboard to check manually.
+[![CI](https://github.com/soneeee22000/GreenLens.dev/actions/workflows/ci.yml/badge.svg)](https://github.com/soneeee22000/GreenLens.dev/actions/workflows/ci.yml)
+[![Backend Tests](https://img.shields.io/badge/backend_tests-25_passing-brightgreen)](https://github.com/soneeee22000/GreenLens.dev)
+[![E2E Tests](https://img.shields.io/badge/e2e_tests-20_passing-brightgreen)](https://github.com/soneeee22000/GreenLens.dev)
+[![Angular Tests](https://img.shields.io/badge/angular_tests-43_passing-brightgreen)](https://github.com/soneeee22000/GreenLens.dev)
+[![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
+[![Angular](https://img.shields.io/badge/Angular-17-DD0031?logo=angular)](https://angular.io/)
+[![C#](https://img.shields.io/badge/C%23-12-239120?logo=csharp)](https://learn.microsoft.com/en-us/dotnet/csharp/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Azure](https://img.shields.io/badge/Azure-AI_Search_%2B_OpenAI-0078D4?logo=microsoftazure)](https://azure.microsoft.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+[Architecture](#architecture) | [API Reference](#api-endpoints) | [Tech Stack](#tech-stack) | [Getting Started](#quick-start) | [Test Coverage](#test-coverage) | [Engineering Decisions](#key-engineering-decisions)
 
 ---
 
@@ -307,3 +318,7 @@ DATABASE_CONNECTION_STRING=Data Source=greenlens.db
 ## License
 
 MIT
+
+---
+
+Built by [Pyae Sone (Seon)](https://github.com/soneeee22000)
