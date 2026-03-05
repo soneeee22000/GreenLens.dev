@@ -53,7 +53,7 @@ API available at `http://localhost:8080`.
 
 ```bash
 dotnet build                                # Build all projects
-dotnet test                                 # Run all tests (19 tests)
+dotnet test                                 # Run all tests (25 tests: 11 Core + 6 Infra + 8 API)
 dotnet run --project src/GreenLens.Api      # Start API server
 dotnet format                               # Format code
 ```
@@ -88,9 +88,9 @@ GreenLens/
 │   ├── GreenLens.Infrastructure/   # EF Core, Azure services
 │   └── GreenLens.Shared/           # DTOs, constants
 ├── tests/
-│   ├── GreenLens.Core.Tests/       # Unit tests (8 tests)
-│   ├── GreenLens.Api.Tests/        # Integration tests (5 tests)
-│   └── GreenLens.Infrastructure.Tests/  # Repository tests (6 tests)
+│   ├── GreenLens.Core.Tests/       # Unit tests for business logic (11 tests)
+│   ├── GreenLens.Api.Tests/        # Integration tests for API endpoints (8 tests)
+│   └── GreenLens.Infrastructure.Tests/  # Repository + Azure service tests (6 tests)
 ├── tools/
 │   └── GreenLens.Seed/             # CLI to seed emission factor data
 ├── docs/
@@ -106,7 +106,7 @@ GreenLens/
 - **Search:** Azure AI Search
 - **AI:** Azure OpenAI (GPT-4o-mini)
 - **Database:** SQLite (dev) / Azure SQL (prod)
-- **Frontend:** Angular 17 + Angular Material (Phase 4)
+- **Frontend:** Angular 17 + Angular Material (in progress)
 - **CI/CD:** GitHub Actions
 - **Container:** Docker
 

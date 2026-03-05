@@ -245,42 +245,42 @@ graph TD
 
 ## 7. Milestones & Build Order
 
-### Phase 1: Foundation (Sessions 1-2)
+### Phase 1: Foundation (Sessions 1-2) -- COMPLETED
 
-- [ ] .NET 8 solution scaffolding with Clean Architecture
-- [ ] Project CLAUDE.md with build rules
-- [ ] Azure resource provisioning (AI Search Free, OpenAI model deployment)
-- [ ] EF Core setup with SQLite + initial migration
-- [ ] Health check endpoint
-- [ ] API key authentication middleware
-- [ ] Swagger/OpenAPI configuration
-- [ ] CI pipeline (build + test + lint)
-- [ ] Smoke test passing
-- **Gate:** Solution builds, tests pass, Swagger accessible, CI green
+- [x] .NET 8 solution scaffolding with Clean Architecture
+- [x] Project CLAUDE.md with build rules
+- [x] Azure resource provisioning (AI Search Free, OpenAI model deployment)
+- [x] EF Core setup with SQLite + initial migration
+- [x] Health check endpoint
+- [x] API key authentication middleware
+- [x] Swagger/OpenAPI configuration
+- [x] CI pipeline (build + test + lint)
+- [x] Smoke test passing
+- **Gate:** Solution builds, tests pass, Swagger accessible, CI green -- PASSED
 
-### Phase 2: Core API (Sessions 3-4)
+### Phase 2: Core API (Sessions 3-4) -- COMPLETED
 
-- [ ] Emission factor data model + seed CLI tool
-- [ ] Azure AI Search index creation + data ingestion
-- [ ] Carbon estimation engine (core business logic)
-- [ ] POST `/api/v1/estimates` endpoint
-- [ ] GET `/api/v1/estimates` and `/api/v1/estimates/{id}`
-- [ ] GET `/api/v1/emission-factors/search` with Azure AI Search
-- [ ] Unit tests for estimation engine (80%+ coverage)
-- [ ] Integration tests for all endpoints
-- **Gate:** Core estimation works end-to-end, search returns relevant results, all tests pass
+- [x] Emission factor data model + seed CLI tool
+- [x] Azure AI Search index creation + data ingestion
+- [x] Carbon estimation engine (core business logic)
+- [x] POST `/api/v1/estimates` endpoint
+- [x] GET `/api/v1/estimates` and `/api/v1/estimates/{id}`
+- [x] GET `/api/v1/emission-factors/search` with Azure AI Search
+- [x] Unit tests for estimation engine (80%+ coverage)
+- [x] Integration tests for all endpoints
+- **Gate:** Core estimation works end-to-end, search returns relevant results, all tests pass -- PASSED
 
-### Phase 3: AI Recommendations + Polish (Sessions 5-6)
+### Phase 3: AI Recommendations + Polish (Sessions 5-6) -- COMPLETED
 
-- [ ] Azure OpenAI integration for recommendations
-- [ ] GET `/api/v1/estimates/{id}/recommendations` endpoint
-- [ ] Response caching for recommendations
-- [ ] Error handling for all edge cases in table above
-- [ ] Rate limiting middleware
-- [ ] API documentation polished
-- **Gate:** Full API feature-complete, all edge cases handled, 80%+ coverage
+- [x] Azure OpenAI integration for recommendations
+- [x] GET `/api/v1/estimates/{id}/recommendations` endpoint
+- [x] Response caching for recommendations (1-hour in-memory cache)
+- [x] Error handling for all edge cases in table above
+- [x] Rate limiting middleware
+- [x] API documentation polished (Swagger XML docs on all endpoints)
+- **Gate:** Full API feature-complete, all edge cases handled, 80%+ coverage -- PASSED
 
-### Phase 4: Angular Frontend (Sessions 7-8)
+### Phase 4: Angular Frontend (Sessions 7-8) -- IN PROGRESS
 
 - [ ] Angular 17 project scaffolding with TypeScript strict mode
 - [ ] Estimation form component (submit resource usage)

@@ -218,3 +218,11 @@ DATABASE_CONNECTION_STRING=Data Source=greenlens.db
 - SQLite for local dev to avoid Azure SQL costs during MVP
 - API key auth (not JWT) -- simpler for DevOps tool integration
 - Angular Material for UI components -- enterprise standard
+
+## PROGRESS
+
+- **Phase 1 (Foundation):** COMPLETED -- Solution scaffolding, EF Core + SQLite, health check, auth middleware, Swagger, rate limiting, CI pipeline
+- **Phase 2 (Core API):** COMPLETED -- Estimation engine, all CRUD endpoints, Azure AI Search integration, seed tool
+- **Phase 3 (AI Recommendations):** COMPLETED -- Azure OpenAI integration, recommendations endpoint with 1-hour cache, 503+Retry-After error handling, fallback recommendations
+- **Phase 4 (Angular Frontend):** IN PROGRESS
+- **Current test count:** 25 tests passing (11 Core + 6 Infra + 8 API)
