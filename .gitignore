@@ -1,0 +1,46 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstats
+*.db
+*.db-shm
+*.db-wal
+
+## IDE
+.vs/
+.vscode/
+*.swp
+*.swo
+*~
+
+## Environment
+.env
+appsettings.Local.json
+
+## Build
+publish/
+out/
+
+## Node / Angular
+node_modules/
+dist/
+.angular/
+.sass-cache/
+npm-debug.log*
+yarn-error.log*
+
+## OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+## Test results
+TestResults/
+coverage/
+*.trx
+
+## Docker
+docker-compose.override.yml

@@ -1,0 +1,17 @@
+**/.vs
+**/.vscode
+**/bin
+**/obj
+**/node_modules
+**/dist
+**/.angular
+**/.env
+**/TestResults
+**/*.db
+**/*.db-shm
+**/*.db-wal
+.git
+.gitignore
+*.md
+LICENSE
+docker-compose*.yml
