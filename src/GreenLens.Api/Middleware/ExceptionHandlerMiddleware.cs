@@ -51,6 +51,11 @@ public class ExceptionHandlerMiddleware
         context.Response.StatusCode = statusCode;
         context.Response.ContentType = "application/json";
 
+        if (statusCode == 503)
+        {
+            context.Response.Headers.Append("Retry-After", "30");
+        }
+
         var response = new ApiResponse<object>(
             Data: null,
             Error: new ApiError(code, message, details));

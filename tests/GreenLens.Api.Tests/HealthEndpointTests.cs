@@ -45,7 +45,7 @@ public class HealthEndpointTests : IClassFixture<CustomWebApplicationFactory>
     {
         // Arrange
         var request = new HttpRequestMessage(HttpMethod.Get, "/api/v1/estimates");
-        request.Headers.Add("X-Api-Key", "dev-greenlens-api-key-change-in-production");
+        request.Headers.Add("X-Api-Key", TestConstants.DevApiKey);
 
         // Act
         var response = await _client.SendAsync(request);

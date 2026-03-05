@@ -16,13 +16,16 @@ public class EstimatesController : ControllerBase
 {
     private readonly CarbonEstimationService _estimationService;
     private readonly IEstimateRepository _estimateRepository;
+    private readonly IRecommendationService _recommendationService;
 
     public EstimatesController(
         CarbonEstimationService estimationService,
-        IEstimateRepository estimateRepository)
+        IEstimateRepository estimateRepository,
+        IRecommendationService recommendationService)
     {
         _estimationService = estimationService;
         _estimateRepository = estimateRepository;
+        _recommendationService = recommendationService;
     }
 
     /// <summary>
@@ -131,5 +134,30 @@ public class EstimatesController : ControllerBase
             responses,
             null,
             new ApiMeta(page, total)));
+    }
+
+    /// <summary>
+    /// Get AI-powered carbon reduction recommendations for a completed estimate.
+    /// </summary>
+    [HttpGet("{id:guid}/recommendations")]
+    [ProducesResponseType(typeof(ApiResponse<List<RecommendationResponse>>), 200)]
+    [ProducesResponseType(typeof(ApiResponse<object>), 404)]
+    [ProducesResponseType(typeof(ApiResponse<object>), 503)]
+    public async Task<IActionResult> GetRecommendations(
+        Guid id,
+        CancellationToken cancellationToken)
+    {
+        var estimate = await _estimateRepository.GetByIdAsync(id, cancellationToken);
+
+        if (estimate is null)
+        {
+            return NotFound(new ApiResponse<object>(
+                null,
+                new ApiError(ErrorCodes.NotFound, $"Estimate {id} not found.")));
+        }
+
+        var recommendations = await _recommendationService.GenerateAsync(estimate, cancellationToken);
+
+        return Ok(new ApiResponse<List<RecommendationResponse>>(recommendations, null));
     }
 }

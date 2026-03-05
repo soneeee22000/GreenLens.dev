@@ -21,8 +21,10 @@ builder.Services.AddDbContext<GreenLensDbContext>(options =>
     options.UseSqlite(connectionString));
 
 // --- Services (Clean Architecture DI) ---
+builder.Services.AddMemoryCache();
 builder.Services.AddScoped<IEstimateRepository, EstimateRepository>();
 builder.Services.AddScoped<IEmissionFactorService, AzureEmissionFactorService>();
+builder.Services.AddScoped<IRecommendationService, AzureRecommendationService>();
 builder.Services.AddScoped<CarbonEstimationService>();
 
 // --- Controllers ---

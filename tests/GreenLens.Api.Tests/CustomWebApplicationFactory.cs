@@ -1,5 +1,7 @@
 using GreenLens.Core.Interfaces;
+using GreenLens.Core.Models;
 using GreenLens.Infrastructure.Data;
+using GreenLens.Shared.DTOs;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Data.Sqlite;
@@ -42,8 +44,34 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
             services.AddDbContext<GreenLensDbContext>(options =>
                 options.UseSqlite(_connection));
 
-            // Register mock IEmissionFactorService (not implemented until Phase 2)
-            services.AddScoped(_ => new Mock<IEmissionFactorService>().Object);
+            // Register mock IEmissionFactorService with configured test data
+            var mockEmissionFactorService = new Mock<IEmissionFactorService>();
+            mockEmissionFactorService
+                .Setup(s => s.GetFactorAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync((string resourceType, string region, CancellationToken _) => new EmissionFactor
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    ResourceType = resourceType,
+                    Region = region,
+                    Provider = "Azure",
+                    Co2ePerUnit = 0.035m,
+                    Unit = "kgCO2e/hour",
+                    Source = "test",
+                    EffectiveDate = DateTime.UtcNow
+                });
+            services.AddScoped(_ => mockEmissionFactorService.Object);
+
+            // Register mock IRecommendationService
+            var mockRecommendationService = new Mock<IRecommendationService>();
+            mockRecommendationService
+                .Setup(s => s.GenerateAsync(It.IsAny<CarbonEstimate>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new List<RecommendationResponse>
+                {
+                    new() { Title = "Use B-series VMs", Description = "Burstable VMs reduce idle energy consumption.", EstimatedReductionPercent = 30, Effort = "Low" },
+                    new() { Title = "Move to greener regions", Description = "Sweden Central has lower grid carbon intensity.", EstimatedReductionPercent = 25, Effort = "Medium" },
+                    new() { Title = "Right-size resources", Description = "Downsize over-provisioned VMs based on utilization data.", EstimatedReductionPercent = 20, Effort = "Medium" }
+                });
+            services.AddScoped(_ => mockRecommendationService.Object);
 
             // Create the schema
             var sp = services.BuildServiceProvider();
