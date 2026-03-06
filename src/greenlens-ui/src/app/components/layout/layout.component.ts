@@ -17,7 +17,9 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   template: `
     <mat-toolbar color="primary">
-      <span class="logo" routerLink="/">GreenLens</span>
+      <span class="logo" routerLink="/"
+        ><mat-icon class="logo-icon">eco</mat-icon>GreenLens</span
+      >
       <span class="spacer"></span>
       <a
         mat-button
@@ -41,9 +43,18 @@ import { MatIconModule } from '@angular/material/icon';
   styles: [
     `
       .logo {
+        display: flex;
+        align-items: center;
+        gap: 6px;
         font-weight: 700;
         cursor: pointer;
-        font-size: 1.2rem;
+        font-size: 1.25rem;
+        letter-spacing: -0.02em;
+      }
+      .logo-icon {
+        font-size: 22px;
+        width: 22px;
+        height: 22px;
       }
       .spacer {
         flex: 1 1 auto;

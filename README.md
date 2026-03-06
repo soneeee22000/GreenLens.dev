@@ -2,6 +2,8 @@
 
 AI-powered cloud carbon footprint estimation for Azure infrastructure. Submit your resource usage — get CO2e estimates, per-resource breakdowns, and actionable reduction recommendations powered by Azure OpenAI.
 
+**[Live Demo](https://greenlens-api.azurewebsites.net)** | **[Swagger API](https://greenlens-api.azurewebsites.net/swagger)**
+
 [![CI](https://github.com/soneeee22000/GreenLens.dev/actions/workflows/ci.yml/badge.svg)](https://github.com/soneeee22000/GreenLens.dev/actions/workflows/ci.yml)
 [![Backend Tests](https://img.shields.io/badge/backend_tests-25_passing-brightgreen)](https://github.com/soneeee22000/GreenLens.dev)
 [![E2E Tests](https://img.shields.io/badge/e2e_tests-20_passing-brightgreen)](https://github.com/soneeee22000/GreenLens.dev)
@@ -13,7 +15,7 @@ AI-powered cloud carbon footprint estimation for Azure infrastructure. Submit yo
 [![Azure](https://img.shields.io/badge/Azure-AI_Search_%2B_OpenAI-0078D4?logo=microsoftazure)](https://azure.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[Architecture](#architecture) | [API Reference](#api-endpoints) | [Tech Stack](#tech-stack) | [Getting Started](#quick-start) | [Test Coverage](#test-coverage) | [Engineering Decisions](#key-engineering-decisions)
+[Live Demo](https://greenlens-api.azurewebsites.net) | [Architecture](#architecture) | [API Reference](#api-endpoints) | [Tech Stack](#tech-stack) | [Getting Started](#quick-start) | [Test Coverage](#test-coverage) | [Engineering Decisions](#key-engineering-decisions)
 
 ---
 

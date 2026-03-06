@@ -66,22 +66,39 @@ import { EstimateResponse } from '../../models/api.models';
       <div class="summary-row">
         <mat-card>
           <mat-card-content>
-            <div class="metric-label">Total Estimates</div>
-            <div class="metric-value">{{ totalEstimates }}</div>
-          </mat-card-content>
-        </mat-card>
-        <mat-card>
-          <mat-card-content>
-            <div class="metric-label">Latest CO2e</div>
-            <div class="metric-value">
-              {{ estimates[0].totalCo2eKg | number: '1.2-2' }} kg
+            <div class="metric-card">
+              <mat-icon class="metric-icon">assessment</mat-icon>
+              <div>
+                <div class="metric-label">Total Estimates</div>
+                <div class="metric-value">{{ totalEstimates }}</div>
+              </div>
             </div>
           </mat-card-content>
         </mat-card>
         <mat-card>
           <mat-card-content>
-            <div class="metric-label">Total CO2e (all time)</div>
-            <div class="metric-value">{{ totalCo2e | number: '1.2-2' }} kg</div>
+            <div class="metric-card">
+              <mat-icon class="metric-icon">schedule</mat-icon>
+              <div>
+                <div class="metric-label">Latest CO2e</div>
+                <div class="metric-value">
+                  {{ estimates[0].totalCo2eKg | number: '1.2-2' }} kg
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-content>
+            <div class="metric-card">
+              <mat-icon class="metric-icon">cloud</mat-icon>
+              <div>
+                <div class="metric-label">Total CO2e (all time)</div>
+                <div class="metric-value">
+                  {{ totalCo2e | number: '1.2-2' }} kg
+                </div>
+              </div>
+            </div>
           </mat-card-content>
         </mat-card>
       </div>
@@ -174,6 +191,23 @@ import { EstimateResponse } from '../../models/api.models';
         grid-template-columns: repeat(3, 1fr);
         gap: 16px;
         margin-bottom: 24px;
+      }
+      @media (max-width: 768px) {
+        .summary-row {
+          grid-template-columns: 1fr;
+        }
+      }
+      .metric-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .metric-icon {
+        font-size: 36px;
+        width: 36px;
+        height: 36px;
+        color: #388e3c;
+        opacity: 0.8;
       }
       .metric-label {
         font-size: 0.875rem;

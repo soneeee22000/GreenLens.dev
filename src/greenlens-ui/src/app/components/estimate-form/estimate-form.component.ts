@@ -142,6 +142,11 @@ import { RegionResponse } from '../../models/api.models';
         grid-template-columns: 1fr 1fr;
         gap: 16px;
       }
+      @media (max-width: 600px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
       .actions {
         display: flex;
         justify-content: space-between;
