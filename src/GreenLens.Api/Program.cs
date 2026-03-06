@@ -89,7 +89,8 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins(
                 "http://localhost:4200",
-                "https://localhost:4200")
+                "https://localhost:4200",
+                "https://greenlens-api.azurewebsites.net")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
@@ -111,22 +112,24 @@ builder.Services.AddRateLimiter(options =>
 var app = builder.Build();
 
 // --- Middleware Pipeline ---
+// Serve Angular SPA static files before any API middleware
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.UseMiddleware<ExceptionHandlerMiddleware>();
 
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "GreenLens API v1");
-        options.RoutePrefix = "swagger";
-    });
-}
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "GreenLens API v1");
+    options.RoutePrefix = "swagger";
+});
 
 app.UseCors();
 app.UseRateLimiter();
 app.UseMiddleware<ApiKeyAuthMiddleware>();
 app.MapControllers();
+app.MapFallbackToFile("index.html");
 
 // --- Auto-migrate database on startup (skip in testing) ---
 if (!app.Environment.IsEnvironment("Testing"))

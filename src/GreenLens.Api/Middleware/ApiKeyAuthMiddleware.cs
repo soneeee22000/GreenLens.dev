@@ -16,7 +16,8 @@ public class ApiKeyAuthMiddleware
     {
         "/health",
         "/swagger",
-        "/api/v1/regions"
+        "/api/v1/regions",
+        "/api/v1/config"
     };
 
     public ApiKeyAuthMiddleware(RequestDelegate next, IConfiguration configuration)
@@ -60,6 +61,10 @@ public class ApiKeyAuthMiddleware
 
     private static bool ShouldSkipAuth(string path)
     {
+        // Skip auth for non-API paths (Angular SPA routes served by MapFallbackToFile)
+        if (!path.StartsWith("/api/", StringComparison.OrdinalIgnoreCase))
+            return true;
+
         return SkipPaths.Any(skip => path.StartsWith(skip, StringComparison.OrdinalIgnoreCase));
     }
 }

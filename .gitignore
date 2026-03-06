@@ -49,3 +49,5 @@ blob-report/
 
 ## Docker
 docker-compose.override.yml
+deploy.zip
+publish/

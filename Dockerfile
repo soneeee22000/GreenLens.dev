@@ -1,4 +1,12 @@
-# Stage 1: Build
+# Stage 1: Build Angular frontend
+FROM node:20-alpine AS frontend
+WORKDIR /app
+COPY src/greenlens-ui/package.json src/greenlens-ui/package-lock.json ./
+RUN npm ci
+COPY src/greenlens-ui/ .
+RUN npx ng build --configuration production
+
+# Stage 2: Build .NET backend
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
@@ -19,7 +27,10 @@ RUN dotnet restore
 COPY . .
 RUN dotnet publish src/GreenLens.Api -c Release -o /app/publish --no-restore
 
-# Stage 2: Runtime
+# Copy Angular build output into wwwroot
+COPY --from=frontend /app/dist/greenlens-ui/browser/ /app/publish/wwwroot/
+
+# Stage 3: Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 

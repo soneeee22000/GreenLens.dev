@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import {
@@ -17,15 +17,31 @@ import {
 })
 export class ApiService {
   private readonly baseUrl = environment.apiUrl;
+  private apiKey = environment.apiKey;
 
   private get headers(): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'X-Api-Key': environment.apiKey,
+      'X-Api-Key': this.apiKey,
     });
   }
 
   constructor(private http: HttpClient) {}
+
+  /**
+   * Fetches the API key from the server config endpoint.
+   * Called during app initialization in production.
+   */
+  async loadConfig(): Promise<void> {
+    if (environment.production) {
+      const response = await firstValueFrom(
+        this.http.get<ApiResponse<{ apiKey: string }>>(
+          `${this.baseUrl}/config`,
+        ),
+      );
+      this.apiKey = response.data?.apiKey ?? '';
+    }
+  }
 
   createEstimate(
     request: EstimateRequest,
