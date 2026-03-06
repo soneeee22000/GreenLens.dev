@@ -91,18 +91,23 @@ public class AzureRecommendationService : IRecommendationService
         catch (ClientResultException ex) when (ex.Status == 429)
         {
             _logger.LogWarning("Azure OpenAI rate limited: {Message}", ex.Message);
-            throw new AppException(
-                ErrorCodes.ServiceUnavailable,
-                "AI recommendation service is temporarily rate limited. Please try again later.",
-                503);
+            var fallback = GetFallbackRecommendations();
+            _cache.Set(cacheKey, fallback, CacheDuration);
+            return fallback;
         }
         catch (ClientResultException ex)
         {
             _logger.LogError(ex, "Azure OpenAI request failed with status {Status}", ex.Status);
-            throw new AppException(
-                ErrorCodes.ServiceUnavailable,
-                "AI recommendation service is currently unavailable. Please try again later.",
-                503);
+            var fallback = GetFallbackRecommendations();
+            _cache.Set(cacheKey, fallback, CacheDuration);
+            return fallback;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unexpected error generating recommendations");
+            var fallback = GetFallbackRecommendations();
+            _cache.Set(cacheKey, fallback, CacheDuration);
+            return fallback;
         }
     }
 
