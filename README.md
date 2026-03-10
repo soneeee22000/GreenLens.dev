@@ -1,5 +1,11 @@
 # GreenLens
 
+[![.NET](https://img.shields.io/badge/.NET_8-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+[![Angular](https://img.shields.io/badge/Angular_17-DD0031?style=for-the-badge&logo=angular&logoColor=white)](https://angular.dev/)
+[![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+
+
 AI-powered cloud carbon footprint estimation for Azure infrastructure. Submit your resource usage — get CO2e estimates, per-resource breakdowns, and actionable reduction recommendations powered by Azure OpenAI.
 
 **[Live Demo](https://greenlens-api.azurewebsites.net)** | **[Swagger API](https://greenlens-api.azurewebsites.net/swagger)**
